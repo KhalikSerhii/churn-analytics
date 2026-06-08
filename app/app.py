@@ -6,21 +6,24 @@ import json
 import plotly.express as px
 import shap
 import matplotlib.pyplot as plt
+import os
 
 st.set_page_config(page_title='Churn Analytics', layout='wide')
 
-# Завантаження моделі
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 @st.cache_resource
 def load_model():
-    with open('../src/lgb_model.pkl', 'rb') as f:
+    with open(os.path.join(BASE_DIR, 'src', 'lgb_model.pkl'), 'rb') as f:
         model = pickle.load(f)
-    with open('../src/feature_names.json', 'r') as f:
+    with open(os.path.join(BASE_DIR, 'src', 'feature_names.json'), 'r') as f:
         features = json.load(f)
     return model, features
 
 @st.cache_data
 def load_data():
-    df = pd.read_csv('../data/df_model.csv')
+    df = pd.read_csv(os.path.join(BASE_DIR, 'data', 'df_model.csv'))
     return df
 
 model, feature_names = load_model()
