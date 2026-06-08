@@ -3,6 +3,7 @@
 Передбачення відтоку клієнтів e-commerce на основі LightGBM.
 
 **Live demo:** https://churn-analytics-khalik.streamlit.app/
+**Dataset** https://www.kaggle.com/datasets/samuelsemaya/e-commerce-customer-churn/
 
 ## Стек
 Python, LightGBM, SHAP, Plotly, Streamlit
